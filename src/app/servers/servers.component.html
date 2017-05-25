@@ -1,0 +1,47 @@
+<label> Server Name </label>
+<!--<input
+    type = "text"
+    class = "form-control"
+    (input) ="updateServerName($event)">-->
+
+<input
+    type = "text"
+    class = "form-control"
+    [(ngModel)] ="serverName">
+<!--    <p> {{serverName}} </p>-->
+
+<br>
+<button 
+    class="btn btn-primary"
+    [disabled] = "!allowNewServer"
+    (click) = "createServer()"> Add Server </button>
+
+<p *ngIf ="serverCreated; else noServer"> Server was created! Server name is: {{serverName}} </p>
+<ng-template #noServer> 
+    <p> No server was created! </p>
+</ng-template>
+
+<button 
+    class="btn btn-primary"
+    (click) = "displayDetails()"> Display details </button>
+<p *ngIf ="detailsActivated"> Password activated: {{details}} </p>
+<p *ngFor="let counter of clickCount; let index = index" [ngStyle]="{backgroundColor: getColor(index)}" [ngClass]="{'white-text': index >= 5}"> {{counter}}</p>
+
+    <!--<input
+    type = "text"
+    class ="form-control"
+    (input) = "onUpdateInput($event)"
+    [(ngModel)] = "programmerName">
+    <p> {{programmerName}} </p>
+
+<button
+    class = "btn btn-primary"
+    [disabled] = "!allowProgrammerName"
+    (click) = "resetProgrammerName()" > Reset ProgrammerName </button>-->
+
+    <!-- <button class="btn btn-primary" 
+    [disabled]="username === ''" 
+    (click)="resetUserName()">Reset Username</button> -->
+<app-server *ngFor="let server of servers"> </app-server>
+
+
